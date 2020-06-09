@@ -1,0 +1,26 @@
+---
+- name: Sublime GPG Key Install
+  apt_key:
+    url: https://download.sublimetext.com/sublimehq-pub.gpg
+    keyring: /etc/apt/trusted.gpg.d/sublimehq-pub.gpg
+  become: true
+
+- name: Ensure HTTPS Apt
+  package:
+    name: apt-transport-https
+    state: present
+  become: true
+
+- name: Add Sublime Repo
+  apt_repository:
+    repo: deb https://download.sublimetext.com/ apt/stable/
+    state: present
+  notify: update apt
+  become: true
+
+- name: Install Sublime Merge
+  apt:
+    name: sublime-merge
+    state: present
+  become: true
+

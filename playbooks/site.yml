@@ -1,7 +1,11 @@
 ---
 - name: Install Workstation Tools
+  handlers:
+    - include: handlers/main.yml
   hosts: 127.0.0.1
   connection: local
   roles:
     - vimtext
+    - sublimetext
+    - sublimemerge
 
