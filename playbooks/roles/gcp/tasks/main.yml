@@ -1,0 +1,12 @@
+---
+- name: Create Downloads Folder
+  file:
+    path: /home/{{ ansible_user }}/Downloads
+    state: directory
+
+- name: Install GCP
+  unarchive:
+    src: 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-{{ version }}-linux-x86_64.tar.gz'
+    dest: /home/{{ ansible_user }}/Downloads
+    remote_src: true
+
