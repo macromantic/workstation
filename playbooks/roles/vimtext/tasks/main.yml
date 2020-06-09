@@ -5,7 +5,7 @@
     owner: '{{ ansible_user }}'
     group: '{{ ansible_user }}'
     mode: '0755'
-    state: touch
+    state: file
 
 - name: Enable Syntax Highlighting
   lineinfile:
