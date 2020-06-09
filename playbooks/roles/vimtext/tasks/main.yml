@@ -1,0 +1,30 @@
+---
+- name: Create Vimrc File
+  file:
+    path: ~/.vimrc
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+    mode: '0755'
+    state: touch
+
+- name: Enable Syntax Highlighting
+  lineinfile:
+    path: ~/.vimrc
+    line: 'syntax on'
+    create: true
+    state: present
+
+- name: Enable Line Numbers
+  lineinfile:
+    path: ~/.vimrc
+    line: 'set number'
+    create: true
+    state: present
+
+- name: 'Enable 4 Char Indentation'
+  lineinfile:
+    path: ~/.vimrc
+    line: 'set tabstop=4'
+    create: true
+    state: present
+

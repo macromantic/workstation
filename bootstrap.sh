@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-apt install puppet -y
+sudo apt install build-essential python python3 ansible puppet -y
+ansible-playbook -i inventory playbooks/site.yml
+
