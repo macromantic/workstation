@@ -1,0 +1,35 @@
+---
+- name: Install Prerequisites for Azure CLI
+  package:
+    name: '{{ packages }}'
+    state: present
+  become: true
+
+- name: Microsoft GPG Key Install
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    keyring: /etc/apt/trusted.gpg.d/microsoft.asc.gpg
+  become: true
+
+- name: LSB Release
+  shell: echo "$(lsb_release -cs)"
+  register: lsb_result
+  failed_when: lsb_result.rc != 0 
+
+- debug:
+    var: lsb_result
+
+- name: Add Azure CLI Repo
+  apt_repository:
+    repo: 'deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ {{ lsb_result.stdout }} main'
+    filename: /etc/apt/sources.list.d/azure-cli.list
+    state: present
+  notify: update apt
+  become: true
+
+- name: Install Azure CLI
+  package:
+    name: azure-cli
+    state: present
+  become: true
+
