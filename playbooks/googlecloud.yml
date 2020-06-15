@@ -1,0 +1,8 @@
+---
+- name: Install Google Cloud SDK
+  handlers:
+    - include: handlers/main.yml
+  hosts: 127.0.0.1
+  connection: local
+  roles:
+    - gcp
