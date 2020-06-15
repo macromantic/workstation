@@ -24,3 +24,7 @@
     state: present
   become: true
 
+- name: Launch Sublime Merge for First Time
+  shell: /opt/sublime_merge/sublime_merge
+  register: submerge_result
+  failed_when: submerge_result.rc > 0
