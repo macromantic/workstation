@@ -14,7 +14,7 @@ gcloud secrets versions access \
 echo "Configuring Sublime Text Settings"
 currentdir=$(pwd)
 cd $SUBLIMETEXT_PACKAGES
-rmdir User
+rm -r User
 git clone https://github.com/macromantic/sublime-settings
 mv sublime-settings User
 cd $currentdir

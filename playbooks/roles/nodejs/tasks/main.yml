@@ -1,0 +1,15 @@
+---
+- name: Run Nodejs Setup
+  shell: 'curl -sL https://deb.nodesource.com/setup_{{ version }}.x | bash -'
+  args:
+    warn: false
+  register: nodejs_result
+  failed_when: nodejs_result.rc > 0
+  become: true
+
+- name: Install Nodejs
+  package:
+    name: nodejs
+    state: present
+  become: true
+

@@ -1,0 +1,8 @@
+---
+- name: Install Markdown Lint
+  npm:
+    name: markdownlint-cli
+    global: true
+    state: present
+  become: true
+

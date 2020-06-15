@@ -1,0 +1,16 @@
+---
+- name: Install Prerequisites
+  package:
+    name:
+      - python
+      - python-pip
+      - python-setuptools
+    state: present
+    update_cache: true
+  become: true
+
+- name: Install Yamllint
+  pip:
+    name: yamllint
+  become: true
+
