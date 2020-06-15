@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-sudo /opt/puppetlabs/bin/puppet module install puppetlabs-stdlib
-sudo rm -r manifests
-mkdir manifests
-cd manifests
-git clone git@github.com:SergK/puppet-tfenv.git
-cd puppet-tfenv
+TF_VERSION='0.12.26'
+
+echo "Installing Terraform $TF_VERSION"
+tfenv install "$TF_VERSION"
+tfenv use "$TF_VERSION"
 
