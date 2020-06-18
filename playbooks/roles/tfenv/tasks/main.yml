@@ -9,11 +9,4 @@
     path: /home/{{ ansible_user }}/.bashrc
     line: 'export PATH="$HOME/.tfenv/bin:$PATH"'
     state: present
-
-- name: Validate
-  shell: which tfenv
-  register: tfenv_result
-
-- debug:
-    var: tfenv_result
-  
+ 
