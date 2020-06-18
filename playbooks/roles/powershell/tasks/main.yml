@@ -1,0 +1,31 @@
+---
+- name: Install Microsoft Packages
+  apt:
+    deb: https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb
+  become: true
+
+- name: Install PowerShell
+  apt:
+    update_cache: true
+    name: powershell
+    state: present
+  become: true
+
+- name: Push PowerShell Init Script
+  template:
+    src: init.ps1
+    dest: /home/{{ ansible_user }}/init.ps1
+    mode: 0755
+
+- name: Run PowerShell Init Script
+  shell: /home/{{ ansible_user }}/init.ps1
+  register: ps_result
+
+- name: PowerShell Run Result
+  debug:
+    var: ps_result.stdout_lines
+
+- name: Cleanup PowerShell Script
+  file:
+    path: /home/{{ ansible_user }}/init.ps1
+    state: absent
