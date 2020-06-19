@@ -3,10 +3,9 @@
   git:
     repo: https://github.com/tfutils/tfenv.git
     dest: /home/{{ ansible_user }}/.tfenv
-    
+
 - name: Update PATH
   lineinfile:
     path: /home/{{ ansible_user }}/.bashrc
     line: 'export PATH="$HOME/.tfenv/bin:$PATH"'
     state: present
- 

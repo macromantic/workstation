@@ -16,3 +16,5 @@
     - sublimemerge
     - vault
     - tfenv
+    - rbenv
+    - testkitchen
