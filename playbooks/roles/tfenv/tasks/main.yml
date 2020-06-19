@@ -9,3 +9,4 @@
     path: /home/{{ ansible_user }}/.bashrc
     line: 'export PATH="$HOME/.tfenv/bin:$PATH"'
     state: present
+  notify: source bashrc

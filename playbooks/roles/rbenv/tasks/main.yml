@@ -4,11 +4,19 @@
     repo: https://github.com/rbenv/rbenv.git
     dest: /home/{{ ansible_user }}/.rbenv
 
+- name: Update PATH
+  lineinfile:
+    path: /home/{{ ansible_user }}/.bashrc
+    line: 'export PATH="$HOME/.rbenv/bin:$PATH"'
+    state: present 
+  notify: source bashrc
+
 - name: Configure rbenv
   lineinfile:
     path: /home/{{ ansible_user }}/.bashrc
     line: 'eval "$(rbenv init -)"'
     state: present
+  notify: source bashrc
 
 - name: Make plugin directory
   shell: mkdir -p "$(rbenv root)"/plugins
@@ -29,8 +37,5 @@
   shell: PREFIX=/usr/local ./install.sh
   args:
     chdir: /home/{{ ansible_user }}/Downloads/ruby-build
-  register: rubybuild_result
   become: true
 
-- debug:
-    var: rubybuild_result.stdout_lines
