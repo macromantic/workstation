@@ -1,0 +1,48 @@
+---
+- name: Clone rbenv repo
+  git:
+    repo: https://github.com/rbenv/rbenv.git
+    dest: /home/{{ ansible_user }}/.rbenv
+
+- name: Update PATH for rbenv
+  lineinfile:
+    path: /home/{{ ansible_user }}/.bashrc
+    line: 'export PATH="$HOME/.rbenv/bin:$PATH"'
+    state: present 
+  notify: source bashrc
+
+- name: Update PATH for Gems
+  lineinfile:
+    path: /home/{{ ansible_user }}/.bashrc
+    line: 'export PATH="$HOME/.gem/ruby/{{ gem_version }}/bin:$PATH"'
+    state: present 
+  notify: source bashrc
+
+- name: Configure rbenv
+  lineinfile:
+    path: /home/{{ ansible_user }}/.bashrc
+    line: 'eval "$(rbenv init -)"'
+    state: present
+  notify: source bashrc
+
+- name: Make plugin directory
+  shell: mkdir -p "$(rbenv root)"/plugins
+  args:
+    warn: false
+
+- name: Make Downloads directory
+  file:
+    path: /home/{{ ansible_user }}/Downloads
+    state: directory
+
+- name: Clone ruby-build repo
+  git:
+    repo: https://github.com/rbenv/ruby-build.git
+    dest: /home/{{ ansible_user }}/Downloads/ruby-build
+
+- name: Install ruby-build
+  shell: PREFIX=/usr/local ./install.sh
+  args:
+    chdir: /home/{{ ansible_user }}/Downloads/ruby-build
+  become: true
+
