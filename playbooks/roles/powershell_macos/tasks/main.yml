@@ -1,0 +1,25 @@
+---
+- name: Install PowerShell
+  homebrew_cask:
+    name: powershell
+    state: present
+
+- name: Push PowerShell Init Script
+  template:
+    src: init.ps1
+    dest: /Users/{{ ansible_user }}/init.ps1
+    mode: 0755
+
+- name: Run PowerShell Init Script
+  shell: /Users/{{ ansible_user }}/init.ps1
+  register: ps_result
+
+- name: PowerShell Run Result
+  debug:
+    var: ps_result.stdout_lines
+
+- name: Cleanup PowerShell Script
+  file:
+    path: /Users/{{ ansible_user }}/init.ps1
+    state: absent
+

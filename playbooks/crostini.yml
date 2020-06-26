@@ -6,8 +6,8 @@
   connection: local
   roles:
     - vimtext
-    - azcli_linux
-    - powershell
+    - azcli_crostini
+    - powershell_crostini
     - nodejs
     - markdownlint
     - yamllint

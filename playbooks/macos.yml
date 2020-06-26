@@ -7,7 +7,7 @@
   roles:
     - vimtext
     - azcli_macos
-#    - powershell
+    - powershell_macos
 #    - nodejs
 #    - markdownlint
 #    - yamllint
