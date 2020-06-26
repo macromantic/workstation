@@ -1,0 +1,20 @@
+---
+- name: Install Workstation Tools on MacOS
+  handlers:
+    - include: handlers/main.yml
+  hosts: 127.0.0.1
+  connection: local
+  roles:
+    - vimtext
+    - azcli_macos
+#    - powershell
+#    - nodejs
+#    - markdownlint
+#    - yamllint
+#    - bashate
+#    - sublimetext
+#    - sublimemerge
+#    - vault
+#    - tfenv
+#    - rbenv
+#    - testkitchen
