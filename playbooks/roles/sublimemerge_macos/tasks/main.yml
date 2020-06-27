@@ -1,0 +1,17 @@
+---
+- name: Download Sublime Merge
+  unarchive:
+    src: https://download.sublimetext.com/sublime_merge_build_2020_mac.zip
+    dest: /Users/{{ ansible_user }}/Downloads
+    remote_src: true
+
+- debug:
+    var: merge_bin
+
+- name: Copy Sublime Merge from Downloads to Applications
+  shell: mv /Users/{{ ansible_user }}/Downloads/Sublime\ Merge.app /Applications/.
+  when: merge_bin.stat.exists == false
+
+- name: Launch Sublime Merge
+  shell: open -a Sublime\ Merge.app
+

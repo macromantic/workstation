@@ -1,0 +1,6 @@
+---
+- name: Install Chef Workstation
+  homebrew_cask:
+    name: chef-workstation
+    state: present
+

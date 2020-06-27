@@ -5,16 +5,17 @@
   hosts: 127.0.0.1
   connection: local
   roles:
-#    - vimtext
-#    - azcli_macos
-#    - powershell_macos
+    - vimtext
+    - azcli_macos
+    - powershell_macos
     - nodejs_macos
     - markdownlint
     - yamllint_macos
     - bashate_macos
     - sublimetext_macos
-#    - sublimemerge
-#    - vault
-#    - tfenv
-#    - rbenv
-#    - testkitchen
+    - sublimemerge_macos
+    - vault_macos
+    - tfenv_macos
+    - chruby_macos
+    - chefdk_macos
+

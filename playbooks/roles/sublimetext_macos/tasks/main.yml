@@ -13,10 +13,6 @@
 
 - name: Copy Sublime Text 3 from Disk Image to Applications
   shell: cp -r /Volumes/Sublime\ Text/Sublime\ Text.app /Applications/.
-  register: install_result
-
-- debug:
-    var: install_result.stdout_lines
 
 - name: Detach Sublime Text 3 Disk Image
   shell: hdiutil detach /Volumes/Sublime\ Text
@@ -25,5 +21,6 @@
 - debug:
     var: unmount_result.stdout_lines
 
-#open -a Sublime\ Text.app
+- name: Launch Sublime Text 3
+  shell: open -a Sublime\ Text.app
 

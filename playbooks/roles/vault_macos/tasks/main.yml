@@ -1,0 +1,21 @@
+---
+- name: Check if Vault Installed
+  stat:
+    path: /usr/local/bin/vault
+  register: vault_bin
+
+- name: Download Vault
+  unarchive:
+    src: https://releases.hashicorp.com/vault/{{ version }}/vault_{{ version }}_darwin_amd64.zip
+    dest: /usr/local/bin
+    remote_src: true
+  when: vault_bin.stat.exists == false
+
+- name: Vault Autocomplete Install
+  shell: vault -autocomplete-install
+  register: vault_result
+  changed_when: vault_result.rc == 0
+  failed_when: 
+    - vault_result.rc > 1
+    - '"already installed" not in vault_result.stderr'
+
