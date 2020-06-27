@@ -10,7 +10,7 @@
     - powershell_crostini
     - nodejs
     - markdownlint
-    - yamllint
+    - yamllint_crostini
     - bashate
     - sublimetext
     - sublimemerge
