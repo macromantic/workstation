@@ -8,3 +8,6 @@
 - name: source bashrc
   shell: source /home/{{ ansible_user }}/.bashrc
 
+- name: source profile
+  shell: source /Users/{{ ansible_user }}/.profile
+
