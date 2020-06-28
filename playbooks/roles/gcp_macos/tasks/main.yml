@@ -1,0 +1,7 @@
+---
+- name: Install GCP
+  get_uri:
+    src: 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-{{ version }}-darwin-x86_64.tar.gz'
+    dest: /Users/{{ ansible_user }}/Downloads
+    remote_src: true
+
