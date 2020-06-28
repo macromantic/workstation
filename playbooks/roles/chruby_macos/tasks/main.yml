@@ -1,0 +1,6 @@
+---
+- name: Install chruby
+  homebrew:
+    name: chruby
+    state: present
+

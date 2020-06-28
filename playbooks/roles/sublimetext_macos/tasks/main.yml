@@ -1,0 +1,26 @@
+---
+- name: Download Sublime Text 3
+  get_url:
+    url: https://download.sublimetext.com/Sublime%20Text%20Build%203211.dmg
+    dest: /Users/{{ ansible_user }}/Downloads/Sublime3.dmg
+
+- name: Mount Sublime Text 3 Disk Image
+  shell: hdiutil attach /Users/{{ ansible_user }}/Downloads/Sublime3.dmg
+  register: mount_result
+
+- debug:
+    var: mount_result.stdout_lines
+
+- name: Copy Sublime Text 3 from Disk Image to Applications
+  shell: cp -r /Volumes/Sublime\ Text/Sublime\ Text.app /Applications/.
+
+- name: Detach Sublime Text 3 Disk Image
+  shell: hdiutil detach /Volumes/Sublime\ Text
+  register: unmount_result
+
+- debug:
+    var: unmount_result.stdout_lines
+
+- name: Launch Sublime Text 3
+  shell: open -a Sublime\ Text.app
+

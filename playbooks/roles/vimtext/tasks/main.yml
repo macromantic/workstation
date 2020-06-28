@@ -3,7 +3,7 @@
   file:
     path: ~/.vimrc
     owner: '{{ ansible_user }}'
-    group: '{{ ansible_user }}'
+    group: '{{ owner_group }}'
     mode: '0755'
     state: touch
 

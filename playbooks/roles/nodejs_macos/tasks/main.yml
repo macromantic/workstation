@@ -1,0 +1,6 @@
+---
+- name: Install Nodejs
+  homebrew:
+    name: node
+    state: present
+

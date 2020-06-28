@@ -1,16 +1,16 @@
 ---
-- name: Install Workstation Tools
+- name: Install Workstation Tools on Crostini
   handlers:
     - include: handlers/main.yml
   hosts: 127.0.0.1
   connection: local
   roles:
     - vimtext
-    - azcli
-    - powershell
+    - azcli_crostini
+    - powershell_crostini
     - nodejs
     - markdownlint
-    - yamllint
+    - yamllint_crostini
     - bashate
     - sublimetext
     - sublimemerge
