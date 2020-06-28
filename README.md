@@ -33,7 +33,7 @@ Close the Terminal
 
 ```[bash]
 cd ~/dev/workstation
-./config-license.sh
+./config-license-macos.sh
 ```
 
 ## Install with Crostini (Chrome OS)
@@ -58,6 +58,6 @@ Close the Terminal
 
 ```[bash]
 cd ~/dev/workstation
-./config-license.sh
+./config-license-crostini.sh
 ```
 
