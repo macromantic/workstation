@@ -1,5 +1,6 @@
 ---
-- name: Install Bashate
-  pip:
-    name: bashate
+- name: Install bashate
+  shell: /usr/local/opt/python/libexec/bin/pip install bashate
+  args:
+    warn: false
 

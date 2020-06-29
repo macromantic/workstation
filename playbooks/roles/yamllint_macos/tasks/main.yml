@@ -1,5 +1,6 @@
 ---
 - name: Install yamllint
-  pip:
-    name: yamllint
+  shell: /usr/local/opt/python/libexec/bin/pip install yamllint 
+  args:
+    warn: false
 

@@ -5,13 +5,8 @@
     dest: /Users/{{ ansible_user }}/Downloads
     remote_src: true
 
-- debug:
-    var: merge_bin
-
 - name: Copy Sublime Merge from Downloads to Applications
-  shell: mv /Users/{{ ansible_user }}/Downloads/Sublime\ Merge.app /Applications/.
-  when: merge_bin.stat.exists == false
+  shell: cp -r /Users/{{ ansible_user }}/Downloads/Sublime\ Merge.app /Applications
 
 - name: Launch Sublime Merge
   shell: open -a Sublime\ Merge.app
-
