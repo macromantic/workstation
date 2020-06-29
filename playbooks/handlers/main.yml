@@ -11,3 +11,5 @@
 - name: source profile
   shell: source /Users/{{ ansible_user }}/.profile
 
+- name: source bash profile
+  shell: source /Users/{{ ansible_user }}/.bash_profile
