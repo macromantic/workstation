@@ -18,4 +18,4 @@
     - tfenv_macos
     - chruby_macos
     - chefdk_macos
-
+    - vagrant
