@@ -4,12 +4,17 @@
     name: chruby
     state: present
 
+- name: Ensure .bash_profile exists
+  file:
+    path: /Users/{{ ansible_user }}/.bash_profile
+    state: touch
+
 - name: Include chruby launch
   lineinfile:
     path: /Users/{{ ansible_user }}/.bash_profile
     line: 'source /usr/local/opt/chruby/share/chruby/chruby.sh'
     state: present
-  notify: source profile
+  notify: source bash profile
 
 - name: Include chruby auto launch
   lineinfile:
